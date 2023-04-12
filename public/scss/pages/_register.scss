@@ -1,0 +1,66 @@
+.standalone-form {
+  max-width: 700px;
+  margin: 100px auto 0;
+  .app-form {
+    .step {
+      img {
+        aspect-ratio: 1/1;
+        width: 240px;
+        height: 240px;
+
+        @media screen and (min-width: 1080px) {
+          width: 360px;
+          height: 360px;
+        }
+      }
+    }
+    .active{
+        display: block;
+    }
+    .inactive{
+        display: none;
+    }
+  }
+}
+
+// /* MU - Sign up Form 
+
+// position: relative;
+// width: 1000px;
+// height: 600px;
+
+// background: #FFFFFF;
+// box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+
+//     What modules are you taking? 
+
+
+// position: absolute;
+// width: 367px;
+// height: 124px;
+// left: 61px;
+// top: 51px;
+
+//     H3 
+
+// font-family: 'Manrope';
+// font-style: normal;
+// font-weight: 400;
+// font-size: 32px;
+// line-height: 39px;
+// or 122% 
+
+// letter-spacing: 0.2px;
+
+// color: #000000;
+
+
+// undraw_book_lover_re_rwjy 1 
+
+
+// position: absolute;
+// width: 366px;
+// height: 278.48px;
+// left: 61px;
+// top: 270px;

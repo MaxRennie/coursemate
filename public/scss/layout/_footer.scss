@@ -1,0 +1,22 @@
+footer {
+    background: $base-grad;
+    padding: 70px 0px;
+
+    .short-logo {
+        width: 126px;
+        height: 80px
+    }
+
+    ul li {
+        padding: 5px 0px;
+        list-style: none;
+
+        a {
+            color: white;
+            text-decoration: none;
+
+        }
+    }
+
+
+}

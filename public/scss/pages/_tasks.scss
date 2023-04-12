@@ -1,0 +1,101 @@
+.tasks {
+  flex-direction: column;
+  .col-12 {
+    padding: 0;
+  }
+  .header {
+    padding: 10px 0 5px;
+    border-bottom: 1px solid $pale-blue;
+    &__title {
+      text-align: center;
+    }
+  }
+
+  &__content {
+    justify-content: flex-end;
+    .col-4 {
+      padding: 0 20px;
+    }
+    .today,
+    .tomorrow,
+    .other {
+      height: calc(100vh - 151px);
+      border-right: 1px solid $pale-blue;
+    }
+    .other {
+      .split {
+        height: 49%;
+        border-bottom: 1px solid $pale-blue;
+        .task__body {
+          overflow: scroll;
+          height: calc(100% - 64px);
+        }
+      }
+    }
+    .task {
+      &__header {
+        text-align: center;
+        border-bottom: 1px solid $pale-blue;
+        padding: 10px 0 5px;
+        margin: 0 60px;
+      }
+      &__body {
+        padding: 10px 10px 0;
+        height: calc(100vh - 202px);
+        overflow: scroll;
+        &__list {
+          &__item {
+            background-color: $pale-blue;
+            padding: 10px 20px 5px;
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+            margin: 0 0 10px;
+            &__title {
+            }
+            &__description {
+            }
+            &__date {
+            }
+            &__priority {
+              width: 40px;
+              height: 40px;
+              transform: rotate(45deg);
+              position: absolute;
+              bottom: -20px;
+              right: -20px;
+              &__low {
+                background-color: $green;
+                width: 40px;
+                height: 40px;
+                transform: rotate(45deg);
+                position: absolute;
+                bottom: -20px;
+                right: -20px;
+              }
+              &__high {
+                background-color: $red;
+                width: 40px;
+                height: 40px;
+                transform: rotate(45deg);
+                position: absolute;
+                bottom: -20px;
+                right: -20px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+/* Task box */
+
+// position: absolute;
+// width: 409px;
+// height: 78px;
+// left: 569px;
+// top: 380px;
+
+// background: #C4D0F0;
+// border-radius: 5px;

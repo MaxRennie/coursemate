@@ -1,0 +1,27 @@
+{
+  "name": "base-install",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@fullcalendar/core": "^6.1.4",
+    "@fullcalendar/daygrid": "^6.1.4",
+    "@fullcalendar/list": "^6.1.4",
+    "@fullcalendar/timegrid": "^6.1.4",
+    "bootstrap": "^5.2.2",
+    "composer": "^4.1.0",
+    "fullcalendar": "^3.4.0",
+    "grunt": "^1.5.3",
+    "grunt-concurrent": "^3.0.0",
+    "grunt-contrib-uglify": "^5.2.2",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-sass": "^3.1.0",
+    "jquery": "^3.6.3",
+    "jquery-ui": "^1.13.2",
+    "lity": "^2.4.1",
+    "moment": "^2.29.4",
+    "node-sass": "^7.0.3",
+    "vue": "^3.2.36",
+    "vue-loader": "^17.0.1"
+  }
+}

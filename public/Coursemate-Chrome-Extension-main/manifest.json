@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "CourseMate",
+  "version": "1.0",
+  "description": "Helps you focus and get things done!",
+  "icons": {
+    "16": "coursemate_logo_short_blue.png",
+    "48": "coursemate_logo_short_blue.png",
+    "128": "coursemate_logo_short_blue.png"
+  },
+  "action": {
+    "default_icon": "coursemate_logo_short_blue.png",
+    "default_title": "CourseMate",
+    "default_popup": "popup/popup.html"
+  },
+  "host_permissions": [
+    "*://*.maxrennie.uosweb.co.uk/*"
+  ],
+  "permissions": ["storage", "alarms", "notifications"],
+  "background": {
+    "service_worker": "background.js",
+    "perstistent": false
+  },
+  "options_page": "options/options.html"
+}

@@ -1,0 +1,59 @@
+#popoutButton {
+  position: fixed;
+  display: block;
+  bottom: 1vh;
+  right: 1vh;
+  width: 50px;
+  height: 50px;
+  z-index: 9999;
+  background-color: $blue;
+  color: #fff;
+  border-radius: 50%;
+  text-decoration: none;
+  i {
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+  }
+}
+
+#itemPopout,
+#calendarPopout {
+  padding: 20px 40px;
+  #add-item-form {
+    padding: 20px 40px;
+    .form-row {
+      display: flex;
+      align-items: center;
+      .graphic {
+        &__image {
+          img {
+            max-width: 100%;
+          }
+        }
+        &__text {
+          padding: 40px 20px;
+          h2 {
+            margin-bottom: 15px;
+          }
+        }
+      }
+      .form-group {
+        .radio-group {
+          display: flex;
+          .radio-pair {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 20px;
+          }
+        }
+      }
+    }
+  }
+}
+.lity-close {
+  display: none;
+}

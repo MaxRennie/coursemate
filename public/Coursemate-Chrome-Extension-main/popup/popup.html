@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="popup.css" />
+    
+    <title>CourseMate Timer</title>
+  </head>
+  <body>
+    <div id="signedin">
+      <div id="logout">
+        <button id="logout-btn"><img src="../right-from-bracket-solid.svg" /></button>
+      </div>
+    <div class="header">
+      <img src="../coursemate_logo_short_blue.png"/>
+    </div>
+    <h1 id="time">00:00</h1>
+    <div class="btn-container">
+      <button id="start-timer-btn">Start Timer</button>
+      <button id="reset-timer-btn">Assign & Reset</button>
+      <button id="add-task-btn">Add Task</button>
+    </div>
+    <div id="task-form">
+      <form>
+        <!-- <div class="form-group"> -->
+            <input type="text" id="title" name="title" placeholder="Item Name">
+            <label for="duedate" id="dueDateLabel">Due date:</label>
+            <input type="date" id="dueDate" name="due_date">
+
+            <textarea id="description" name="description" placeholder="Description"></textarea>
+            <div class="radio-group" id="priority">
+                <div class="radio-pair">
+                    <input type="radio" name="priority" id="priority_lo" value="1">
+                    <label for="login">Low</label><br>
+                </div>
+                <div class="radio-pair">
+                    <input type="radio" name="priority" id="priority_med" value="2" checked>
+                    <label for="signup">Medium</label><br>
+                </div>
+                <div class="radio-pair">
+                    <input type="radio" name="priority" id="priority_hi" value="3">
+                    <label for="signup">High</label><br>
+                </div>
+            </div>
+            <button type="button" id="add-task-form">Add Task</button>
+        <!-- </div> -->
+    </form>
+      </div>
+    <div id="task-container">
+      <select name="tasks" id="tasks">
+        <option>Please select a item...</option>
+        
+      </select>
+    </div>
+  </div>
+  <div id="signedout">
+    <div class="header">
+      <img src="../coursemate_logo_short_blue.png"/>
+    </div>
+    <h2>Please sign in to use this extension</h2>
+    <form>
+      <input type="text" id="email" placeholder="Email" />
+      <input type="password" id="password" placeholder="Password" />
+    <div class="btn-container">
+      <button id="signin-btn" type="button">Sign In</button>
+      <a href="https://coursemate.maxrennie.uosweb.co.uk/register" target="_blank"><button id="signup-btn">Sign Up</button></a>
+      </div>
+    </form>
+  </body>
+  <script src="../jquery-3.6.4.min.js"></script>
+  <script src="../jquery.session.js"></script>
+  <script src="popup.js"></script>
+  <script src="timer.js"></script>
+</html>

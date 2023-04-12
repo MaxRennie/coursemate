@@ -1,0 +1,29 @@
+//Abstracts
+@import "abstracts/variables";
+//Vendors
+@import "vendors/bootstrap";
+@import "../node_modules/lity/dist/lity.min.css";
+@import "../node_modules/font-awesome/css/font-awesome.min.css";
+//Base
+@import "base/typography";
+//Layout
+@import "layout/navigation";
+@import "layout/footer";
+//Components
+@import "components/app-form";
+@import "components/button";
+@import "components/calendar";
+@import "components/form";
+@import "components/hero";
+@import "components/icon-carousel";
+@import "components/itemPopout";
+@import "components/searchForm";
+@import "components/sidebar";
+//Pages
+@import "pages/account";
+@import "pages/calendar";
+@import "pages/home";
+@import "pages/register";
+@import "pages/tasks";
+//Themes
+@import "themes/base";

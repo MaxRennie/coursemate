@@ -1,0 +1,218 @@
+* {
+  font-family: "Manrope";
+  font-style: normal;
+  letter-spacing: 0.2px;
+}
+body {
+  /* height: 400px; */
+  width: 350px;
+  background-color: #4a69bd;
+  border-radius: 10px;
+  color: #fff;
+}
+
+#logout {
+  position: absolute;
+  top: 0;
+  right: 15px;
+}
+
+#logout-btn {
+  color: #4a69bd;
+  background-color: #fff;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  padding: 8px;
+  font-weight: bold;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+#logout-btn > img {
+  width: 25px;
+  height: 25px;
+  margin: 0;
+  color: #4a69bd;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  height: 75px;
+  background-color: #fff;
+  margin: -8px;
+  padding: 25px;
+}
+
+#time {
+  text-align: center;
+  font-size: 50px;
+  margin: 20px;
+  font-weight: normal;
+  color: #fff;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: space-around;
+  min-width: 230px;
+}
+h2 {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+button {
+  color: #4a69bd;
+  background-color: #fff;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  padding: 8px;
+  font-weight: bold;
+  width: 100px;
+  cursor: pointer;
+}
+
+.btn-container > a > button {
+  color: #4a69bd;
+  background-color: #fff;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  padding: 8px;
+  font-weight: bold;
+  width: 100px;
+  cursor: pointer;
+}
+
+#task-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+input {
+  background: #fff;
+  border: none;
+  border-radius: 4px;
+  height: 40px;
+  margin: 5px;
+  padding: 5px 10px 5px 10px;
+  width: 314px;
+  height: 31.5px;
+}
+input[type="password"] {
+  margin: 0 0 20px;
+}
+
+select,
+textarea {
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  margin: 5px;
+  padding: 5px 10px 5px 10px;
+  width: 314px;
+  color: #4a69bd;
+  font-weight: 600;
+  height: 31.5px;
+}
+
+.task-input {
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  margin: 5px;
+  padding: 5px 10px 5px 10px;
+  width: 250px;
+}
+
+.task-delete {
+  outline: none;
+  border: none;
+  height: 25px;
+  width: 25px;
+  border-radius: 4px;
+  color: #4a69bd;
+  cursor: pointer;
+  font-weight: 700;
+}
+input[type="radio"] {
+  height: 31.5px;
+  width: 31.5px;
+}
+.radio-group {
+  display: flex;
+  flex-direction: row;
+  width: 300px;
+  justify-content: space-around;
+}
+.radio-pair {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#task-form {
+  display: none;
+}
+
+body {
+  font-family: verdana;
+  font-size: 15px;
+}
+A {
+  color: #333;
+  text-decoration: none;
+}
+A:hover {
+  color: #ccc;
+  text-decoration: none;
+}
+#mask {
+  z-index: 9000;
+  position: absolute;
+  background-color: #000;
+  display: none;
+  top: 0px;
+  left: 0px;
+}
+#boxes .window {
+  z-index: 9999;
+  position: fixed;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  width: 640px;
+  padding-right: 20px;
+  display: none;
+  height: 385px;
+  padding-top: 20px;
+}
+#boxes #dialog {
+  padding-bottom: 10px;
+  background-color: #ffffff;
+  padding-left: 10px;
+  width: 640px;
+  padding-right: 10px;
+  height: 385px;
+  padding-top: 10px;
+}
+
+.redbox {
+  color: #f00;
+  font-weight: bold;
+}
+.bold {
+  font-weight: bold;
+}

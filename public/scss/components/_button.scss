@@ -1,0 +1,27 @@
+.btn {
+  padding: 11px 25px;
+  min-width: 135px;
+  align-items: center;
+  text-align: center;
+  border-radius: 25px;
+  margin: 10px 0;
+  &__light {
+    background-color: $pale-blue;
+    color: $off-black;
+
+    &:hover {
+      background-color: $blue;
+      color: $white;
+    }
+  }
+
+  &--default {
+    background-color: $blue;
+    color: $white;
+
+    &:hover {
+      background-color: $pale-blue;
+      color: $off-black;
+    }
+  }
+}

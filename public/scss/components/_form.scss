@@ -1,0 +1,27 @@
+input[type="textarea"],
+textarea {
+  min-height: 120px;
+}
+.file-upload {
+  display: flex;
+  flex-direction: row !important;
+  justify-content: center;
+  width: 90% !important;
+  margin: 5px 20px !important;
+  
+  #user_image {
+    min-height: 50px !important;
+    margin: 0 !important;
+  }
+}
+input[type="submit"]{
+  margin: 5px auto;
+}
+
+#home-form{
+  .radio-group{
+    display: flex;
+    align-items: center;
+    padding: 0 0 25px;
+  }
+}
