@@ -8,21 +8,13 @@ class Calendar
     }
     public function getItemsForUser()
     {
-        if ($_SESSION['user_data']['user_id'] == '') {
-            $stmt = $this->Conn->prepare("SELECT * FROM items WHERE person_id = :person_id");
-            $stmt->execute(
-                array(
-                    ':person_id' => $_POST['person_id']
-                )
-            );
-        } else {
-            $stmt = $this->Conn->prepare("SELECT * FROM items WHERE person_id = :person_id");
-            $stmt->execute(
-                array(
-                    ':person_id' => $_SESSION['user_data']['user_id']
-                )
-            );
-        }
+        $stmt = $this->Conn->prepare("SELECT * FROM items WHERE person_id = :person_id");
+        $stmt->execute(
+            array(
+                ':person_id' => $_SESSION['user_data']['user_id']
+            )
+        );
+
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $results;
     }
@@ -92,10 +84,10 @@ class Calendar
     }
     public function insertGrat($post)
     {
-        var_dump($post);
+
         $query = "INSERT INTO gratitude (user_id, entry_date, gratitude) VALUES (:user_id, :entry_date, :gratitude)";
         $statement = $this->Conn->prepare($query);
-        var_dump($statement);
+
         $statement->execute(
             array(
                 ':user_id'  => $post['user_id'],

@@ -29,13 +29,8 @@ if ($_POST) {
     $_POST['user_id'] = $_SESSION['user_data']['user_id'];
 
     if ($_POST['item_id'] == '') {
-        var_dump("1: ");
-        var_dump($_POST);
-        die;
         $calendar = $Calendar->insertItem($_POST);
     } else {
-        var_dump("2: ");
-        var_dump($_POST);
         $calendar = $Calendar->updateItem($_POST);
     }
 

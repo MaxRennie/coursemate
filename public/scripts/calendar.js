@@ -6,7 +6,9 @@ jQuery(document).ready(function () {
       nowIndicator: true,
       editable: true,
       dayMaxEvents: true,
-      header: false,
+      header: {
+        right: "today prev,next",
+      },
       initialView: "dayGridMonth",
       events: function (start, end, timezone, callback) {
         $.ajax({
@@ -20,6 +22,7 @@ jQuery(document).ready(function () {
             var events = [];
             if (responseText[0] != "") {
               var responseText = JSON.parse(responseText[0]);
+              console.log(responseText);
               for (var i = 0; i < responseText.length; i++) {
                 if (responseText[i].type_id == 1) {
                   events.push({
@@ -37,6 +40,7 @@ jQuery(document).ready(function () {
                   });
                 }
               }
+              console.log(events);
               callback(events);
             } else {
               callback(null);
@@ -177,29 +181,27 @@ jQuery(document).ready(function () {
       }
     });
   }
-
 });
 
 function insertEventData(event) {
   console.log(event);
-  if(event.title){
-  console.log(event.title);
-  $("#calendarTitle").val(event.title);
+  if (event.title) {
+    console.log(event.title);
+    $("#calendarTitle").val(event.title);
   }
-  if(event.start != null){
-  console.log(event.start._i);
-  $("#start").val(event.start._i);
+  if (event.start != null) {
+    console.log(event.start._i);
+    $("#start").val(event.start._i);
   }
-  if(event.end != null){
-  console.log(event.end._i);
-  $("#end").val(event.end._i);
+  if (event.end != null) {
+    console.log(event.end._i);
+    $("#end").val(event.end._i);
   }
-  if(event.description){
+  if (event.description) {
     console.log(event.description);
     $("#description").val(event.description);
   }
   $("calendarSubmit").val("Update");
-
 
   //calendarTitle = $("#calendarTitle").val();
   // calendarStart = event.title

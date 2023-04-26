@@ -28,7 +28,7 @@ if (isset($_POST['gratitude'])) {
     $post['user_id'] = $_SESSION['user_data']['user_id'];
     $post['entry_date'] = date("Y-m-d");
     $post['gratitude'] = $_POST['gratitude'];
-    var_dump($post);
+
     $exists = $calendar->checkGrat($post);
     if ($exists) {
         $calendar->updateGrat($post);
