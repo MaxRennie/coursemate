@@ -23,6 +23,21 @@ if (isset($_POST['insert'])) {
     // Call the insertItem method and pass the data
     $calendar->insertItem($post);
 }
+if (isset($_POST['gratitude'])) {
+    // Get the data from the POST request
+    $post['user_id'] = $_SESSION['user_data']['user_id'];
+    $post['entry_date'] = date("Y-m-d");
+    $post['gratitude'] = $_POST['gratitude'];
+    var_dump($post);
+    $exists = $calendar->checkGrat($post);
+    if ($exists) {
+        $calendar->updateGrat($post);
+    } else {
+        $calendar->insertGrat($post);
+    }
+
+    // Call the insertItem method and pass the data
+}
 if (isset($_POST['delete'])) {
     // Get the data from the POST request
 

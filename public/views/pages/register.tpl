@@ -5,11 +5,11 @@
     <div class="container mb-5 navbar-spacing">
 
         <div class="standalone-form">
-            <div class="app-form col-md-10" id="app-form">
-                <div id="step-1" class="step active">
-                    <div class="image">
-                        <img src="src/images/team.svg" alt="Girl studying" width="480" height="480">
-                    </div>
+            <div class="app-form col-offset-1 col-10 col-md-12" id="app-form">
+                <div class="image col-12 col-md-6">
+                    <img src="src/images/team.svg" alt="Girl studying" width="480" height="480">
+                </div>
+                <div class="col-12 col-md-6 form-container">
                     <form id="registration" method="post" action="" enctype="multipart/form-data">
                         <div class="form-group">
                             <h2>Sign Up</h2><br>
@@ -17,7 +17,8 @@
                             <input type="text" id="lname" name="lname" placeholder="Last Name" autocomplete="on">
                             <div class="form-group file-upload">
                                 <label for="user_image">Upload a Profile Image</label>
-                                <input type="file" class="form-control-file" id="user_image" name="user_image" placeholder="Upload a Profile Image">
+                                <input type="file" class="form-control-file" id="user_image" name="user_image"
+                                    placeholder="Upload a Profile Image">
                             </div>
                             <input type="text" id="email" name="email" placeholder="Email" autocomplete="on"
                                 value="{$smarty.session.user}">
@@ -67,9 +68,9 @@
                                     placeholder="Add Course">
                                 <button class="btn btn__light form-group-submit" type="submit">Next</button>
                             </div>
+                        </div>
                     </form>
                 </div>
-
             </div>
         </div>
     </div>

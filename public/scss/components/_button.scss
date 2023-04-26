@@ -15,9 +15,11 @@
     }
   }
 
-  &--default {
+  &__default {
     background-color: $blue;
     color: $white;
+    border: none;
+    border-radius: 5px;
 
     &:hover {
       background-color: $pale-blue;

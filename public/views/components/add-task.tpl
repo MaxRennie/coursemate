@@ -17,7 +17,8 @@
                 <form method="post" action="" enctype="multipart/form-data">
                     <div class="form-group">
                         {* both *}
-                        <input type="text" id="title" name="title" placeholder="Item Name">
+                        <input type="hidden" id="item_id" name="item_id" value="">
+                        <input type="text" id="title" name="title" placeholder="Item Name" required>
                         {* conditional statement *}
                         <div class="radio-group">
                             <div class="radio-pair">
@@ -31,7 +32,7 @@
                         </div>
                         {* task *}
                         <label for="duedate" id="dueDateLabel">Due date:</label>
-                        <input type="date" id="dueDate" name="due_date">
+                        <input type="date" id="dueDate" name="due_date" required>
                         {* event *}
                         <label for="start" id="startLabel" style="display:none;">Start Time and Date(date and
                             time):</label>
@@ -53,7 +54,7 @@
                                 <label for="signup">Medium</label><br>
                             </div>
                             <div class="radio-pair">
-                                <input type="radio" name="priority" id="priority_hi" value="3" checked>
+                                <input type="radio" name="priority" id="priority_hi" value="3">
                                 <label for="signup">High</label><br>
                             </div>
                         </div>

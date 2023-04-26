@@ -12,7 +12,6 @@ require_once(__DIR__ . '/includes/boot.include.php');
 if ($_GET['p']) {
     
     $smarty->assign('view_name', $_GET['p']);
-    var_dump($_GET['p']);
     require_once('controllers/' . $_GET['p'] . '.php');
     $smarty->display('pages/' . $_GET['p'] . '.tpl');
     /* secure pages array */

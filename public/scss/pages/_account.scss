@@ -1,21 +1,32 @@
 .account {
-  padding: 20px 0 0;
-  .col-12 {
-    // padding: 0 50px;
-    @media screen and (min-width: 768px) {
-
-      padding: 20px 0;
-    }
-    img {
-      border-radius: 50%;
-      width: 350px;
-      height: 350px;
-      margin: 0 0 20px;
-    }
+  .statistics {
+    align-items: flex-start;
+  }
+  .settings{
+    align-items: center;
+  }
+  .settings,
+  .statistics {
     display: flex;
+    flex-direction: column;
 
-    img {
-      margin: auto;
+  }
+  .col-12 {
+    padding: 20px 30px;
+    .image {
+      img {
+        border-radius: 50%;
+        width: 350px;
+        height: 350px;
+        margin: 0 0 20px;
+        margin: auto;
+        align-self: center;
+        object-fit: cover;
+      }
+    }
+
+    @media screen and (min-width: 768px) {
+      padding: 20px 30px;
     }
     @media screen and (max-width: 768px) {
       flex-direction: column;
@@ -29,6 +40,15 @@
     .btn {
       width: 100%;
       margin: 10px;
+    }
+  }
+  .stat{
+    width: 100%;
+    padding: 25px 24px;
+    p{
+      text-align: end;
+      font-size: xx-large;
+      color: $blue;
     }
   }
 }

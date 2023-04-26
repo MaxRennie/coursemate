@@ -1,18 +1,10 @@
 <?php
-
 class Calendar
 {
     protected $Conn;
     public function __construct($Conn)
     {
         $this->Conn = $Conn;
-    }
-    public function getItems()
-    {
-        $stmt = $this->Conn->prepare("SELECT * FROM items");
-        $stmt->execute();
-        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $results;
     }
     public function getItemsForUser()
     {
@@ -78,7 +70,7 @@ class Calendar
     }
     public function getThisWeeksTasksForUser()
     {
-        $stmt = $this->Conn->prepare("SELECT * FROM items WHERE person_id = :person_id AND type_id = 2 AND due_date BETWEEN CURDATE() AND CURDATE() + INTERVAL 7 DAY");
+        $stmt = $this->Conn->prepare("SELECT * FROM items WHERE person_id = :person_id AND type_id = 2 AND due_date BETWEEN CURDATE() + INTERVAL 2 DAY AND CURDATE() + INTERVAL 7 DAY");
         $stmt->execute(
             array(
                 ':person_id' => $_SESSION['user_data']['user_id']
@@ -96,6 +88,56 @@ class Calendar
             )
         );
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $results;
+    }
+    public function insertGrat($post)
+    {
+        var_dump($post);
+        $query = "INSERT INTO gratitude (user_id, entry_date, gratitude) VALUES (:user_id, :entry_date, :gratitude)";
+        $statement = $this->Conn->prepare($query);
+        var_dump($statement);
+        $statement->execute(
+            array(
+                ':user_id'  => $post['user_id'],
+                ':entry_date' => $post['entry_date'],
+                ':gratitude' => $post['gratitude']
+            )
+        );
+    }
+    public function checkGrat()
+    {
+        $query = "SELECT * FROM gratitude WHERE user_id = :user_id AND entry_date = CURDATE()";
+        $statement = $this->Conn->prepare($query);
+        $statement->execute(
+            array(
+                ':user_id'  => $_SESSION['user_data']['user_id'],
+            )
+        );
+        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $results;
+    }
+    public function updateGrat($post)
+    {
+        $query = "UPDATE gratitude SET gratitude = :gratitude WHERE user_id = :user_id AND entry_date = :entry_date";
+        $statement = $this->Conn->prepare($query);
+        $statement->execute(
+            array(
+                ':user_id'  => $post['user_id'],
+                ':entry_date' => $post['entry_date'],
+                ':gratitude' => $post['gratitude']
+            )
+        );
+    }
+    public function getYesterdaysGrat()
+    {
+        $query = "SELECT * FROM gratitude WHERE user_id = :user_id AND entry_date = CURDATE() - INTERVAL 1 DAY";
+        $statement = $this->Conn->prepare($query);
+        $statement->execute(
+            array(
+                ':user_id'  => $_SESSION['user_data']['user_id']
+            )
+        );
+        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
         return $results;
     }
     public function insertItem($post)
@@ -165,8 +207,8 @@ class Calendar
             )
         );
     }
-
-    public function getTimesForItem($item_id){
+    public function getTimesForItem($item_id)
+    {
         $stmt = $this->Conn->prepare("SELECT * FROM items WHERE associated_item = :associated_item AND type_id = 3");
         $stmt->execute(
             array(
@@ -175,5 +217,73 @@ class Calendar
         );
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $results;
+    }
+    public function getThisWeeksEventsForUser()
+    {
+        $stmt = $this->Conn->prepare("SELECT * FROM items WHERE person_id = :person_id AND type_id = 1 AND due_date BETWEEN CURDATE() + INTERVAL 2 DAY AND CURDATE() + INTERVAL 7 DAY");
+        $stmt->execute(
+            array(
+                ':person_id' => $_SESSION['user_data']['user_id']
+            )
+        );
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $results;
+    }
+    public function getThisWeeksTaskTimeForUser()
+    {
+        $stmt = $this->Conn->prepare("SELECT * FROM items WHERE person_id = :person_id AND type_id = 3 AND due_date BETWEEN CURDATE() + INTERVAL 2 DAY AND CURDATE() + INTERVAL 7 DAY");
+        $stmt->execute(
+            array(
+                ':person_id' => $_SESSION['user_data']['user_id']
+            )
+        );
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $totalDuration = $this->duration_cal($results);
+        return $totalDuration;
+    }
+    public function duration_cal($durations)
+    {
+        $sec = 0;
+        foreach ($durations as $du) {
+            $timarr = explode(":", $du['duration']);
+            $hh = $timarr[0];
+            $mm = $timarr[1];
+            $ss = $timarr[2];
+
+            $sec = $sec + ($hh * 60 * 60) + ($mm * 60) + $ss;
+        }
+
+        $hh = floor($sec / 3600);
+        $mm = floor(($sec % 3600) / 60);
+        $ss = (($sec % 3600) % 60);
+
+        $hh = str_pad($hh, 2, '0', STR_PAD_LEFT);
+        $mm = str_pad($mm, 2, '0', STR_PAD_LEFT);
+        $ss = str_pad($ss, 2, '0', STR_PAD_LEFT);
+
+        return $hh . ":" . $mm . ":" . $ss;
+    }
+    public function getCompletedTasksForUser()
+    {
+        $stmt = $this->Conn->prepare("SELECT * FROM items WHERE person_id = :person_id AND type_id = 1 AND completed = 1");
+        $stmt->execute(
+            array(
+                ':person_id' => $_SESSION['user_data']['user_id']
+            )
+        );
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $results;
+    }
+    public function getTotalTaskTimeForUser()
+    {
+        $stmt = $this->Conn->prepare("SELECT * FROM items WHERE person_id = :person_id AND type_id = 3");
+        $stmt->execute(
+            array(
+                ':person_id' => $_SESSION['user_data']['user_id']
+            )
+        );
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $totalDuration = $this->duration_cal($results);
+        return $totalDuration;
     }
 }

@@ -2,6 +2,7 @@ $(document).ready(function () {
   $("input[type=radio][name=type_id]").change(function () {
     if (this.value == "2") {
       $("#dueDate").show();
+      $("#dueDate").attr("required", true);
       $("#dueDateLabel").show();
       $("#priority").show();
       $("#startLabel").hide();
@@ -14,8 +15,10 @@ $(document).ready(function () {
       $("#priority").hide();
       $("#startLabel").show();
       $("#start").show();
+      $("#start").attr("required", true);
       $("#endLabel").show();
       $("#end").show();
+      $("#end").attr("required", true);
     }
   });
   // $("#popoutButton").click(function () {

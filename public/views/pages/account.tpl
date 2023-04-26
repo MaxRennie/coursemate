@@ -19,8 +19,10 @@
                     <h4>Thanks for using CourseMate</h4>
                     <p>Here you can change your password or profile picture</p>
 
-                    <button class="btn btn-primary" id="changePassword">Change Password</button>
-                    <button class="btn btn-primary" id="changeProfilePic">Change Profile Picture</button>
+                    <div class="buttons">
+                        <button class="btn btn-primary" id="changePassword">Change Password</button>
+                        <button class="btn btn-primary" id="changeProfilePic">Change Profile Picture</button>
+                    </div>
                     <div id="passwordChange" style="display:none;">
                         <form value="password" method="post">
                             <input type="password" id="currentPassword" name="currentPassword"
@@ -49,23 +51,23 @@
                     <h3 class="mb-4 pb-2">Your Statistics</h3>
                     <div class="stat">
                         <h4>Events this week</h4>
-                        <p>{$user.week_events}</p>
+                        <p>{$event_count}</p>
                     </div>
                     <div class="stat">
                         <h4>Tasks this week</h4>
-                        <p>{$user.week_tasks}</p>
+                        <p>{$task_count}</p>
                     </div>
                     <div class="stat">
                         <h4>Time spent this week</h4>
-                        <p>{$user.completed_courses}</p>
+                        <p>{$task_time}</p>
                     </div>
                     <div class="stat">
                         <h4>Total completed Tasks</h4>
-                        <p>{$user.completed_tasks}</p>
+                        <p>{$completed_tasks_count}</p>
                     </div>
                     <div class="stat">
                         <h4>Total time spent</h4>
-                        <p>{$user.completed_courses}</p>
+                        <p>{$total_task_time}</p>
                     </div>
                 </div>
             </div>

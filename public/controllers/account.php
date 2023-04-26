@@ -36,3 +36,29 @@ if (isset($_POST['submit'])) {
         }
     }
 }
+
+//get number of events for user this week
+$Calendar = new Calendar($Conn);
+$events = $Calendar->getThisWeeksEventsForUser();
+$event_count = count($events);
+$smarty->assign('event_count', $event_count);
+
+//get number of tasks for user this week
+$tasks = $Calendar->getThisWeeksTasksForUser();
+$task_count = count($tasks);
+$smarty->assign('task_count', $task_count);
+
+//get total time spent on tasks this week
+$task_time = $Calendar->getThisWeeksTaskTimeForUser();
+$smarty->assign('task_time', $task_time);
+
+//get total completed tasks
+$completed_tasks = $Calendar->getCompletedTasksForUser();
+$completed_tasks_count = count($completed_tasks);
+$smarty->assign('completed_tasks_count', $completed_tasks_count);
+
+
+//get total time spent on tasks
+$total_task_time = $Calendar->getTotalTaskTimeForUser();
+$smarty->assign('total_task_time', $total_task_time);
+

@@ -21,11 +21,11 @@ class User
             'user_image' => $user_data['user_image']
         ));
     }
-    public function checkUserExists($user_data)
+    public function checkUserExists()
     {
         $query = "SELECT * FROM users WHERE email = :email";
         $stmt = $this->Conn->prepare($query);
-        $stmt->execute(array('email' => $user_data['email']));
+        $stmt->execute(array('email' => $_SESSION['user_data']['email']));
         return $stmt->fetch();
     }
     public function loginUser($email, $password)

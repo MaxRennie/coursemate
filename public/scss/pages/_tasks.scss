@@ -88,14 +88,23 @@
       }
     }
   }
+  /* Task box */
+  .buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 5px 10px;
+    .btn__default {
+      width: 28px;
+      margin: 5px;
+    }
+  }
+
+  // position: absolute;
+  // width: 409px;
+  // height: 78px;
+  // left: 569px;
+  // top: 380px;
+
+  // background: #C4D0F0;
+  // border-radius: 5px;
 }
-/* Task box */
-
-// position: absolute;
-// width: 409px;
-// height: 78px;
-// left: 569px;
-// top: 380px;
-
-// background: #C4D0F0;
-// border-radius: 5px;
