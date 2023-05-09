@@ -1,11 +1,11 @@
 <body id="page--{$view_name}">
     <nav class="navbar navbar-expand-md navbar-custom">
-    {if $user_data && $user_data.user_image != null}
-        <a class="navbar-brand" href="/tasks"><img src="src/images/logo/coursemate_logo_long_white.svg" alt="CourseMate"
-        height="20px"></a>
+        {if $user_data && $user_data.user_image != null}
+            <a class="navbar-brand" href="/tasks"><img src="src/images/logo/coursemate_logo_long_white.svg" alt="CourseMate"
+                    height="20px"></a>
         {else}
             <a class="navbar-brand" href="index.php"><img src="src/images/logo/coursemate_logo_long_white.svg"
-            alt="CourseMate" height="20px"></a>
+                    alt="CourseMate" height="20px"></a>
         {/if}
         <ul class="nav navbar-nav ms-auto">
             <li class="nav-item profile">
@@ -22,9 +22,11 @@
                     <a class="nav-link" href="/account"><img src="src/images/profile.svg" alt="Profile" width="40px"
                             height="40px"></a>
                     <ul>
-                        <li class="sub-item" href="/logout">
-                            <i class="fa-solid fa-right-from-bracket"></i>
-                            <p>Logout</p>
+                        <li class="sub-item">
+                            <a href="/logout">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                                <p>Logout</p>
+                            </a>
                         </li>
                     </ul>
                 {else}

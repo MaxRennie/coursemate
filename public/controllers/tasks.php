@@ -14,6 +14,8 @@ $smarty->assign('todaysTasks', $todaysTasks);
 $smarty->assign('tomorrowsTasks', $tomorrowsTasks);
 $smarty->assign('weekTasks', $weekTasks);
 
+
+
 if ($_POST) {
     if ($_POST['start'] == '') {
         $_POST['start'] = null;
@@ -33,9 +35,6 @@ if ($_POST) {
     } else {
         $calendar = $Calendar->updateItem($_POST);
     }
-
-
-    $calendar = $Calendar->insertItem($_POST);
 
     header('Location: ./tasks');
 }

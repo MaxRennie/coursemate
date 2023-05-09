@@ -62,7 +62,7 @@ class Calendar
     }
     public function getThisWeeksTasksForUser()
     {
-        $stmt = $this->Conn->prepare("SELECT * FROM items WHERE person_id = :person_id AND type_id = 2 AND due_date BETWEEN CURDATE() + INTERVAL 2 DAY AND CURDATE() + INTERVAL 7 DAY");
+        $stmt = $this->Conn->prepare("SELECT * FROM items WHERE person_id = :person_id AND type_id = 2 AND due_date BETWEEN CURDATE() AND CURDATE() + INTERVAL 7 DAY");
         $stmt->execute(
             array(
                 ':person_id' => $_SESSION['user_data']['user_id']
@@ -188,14 +188,15 @@ class Calendar
     }
     public function addTime($item)
     {
-        $query = "INSERT INTO items (type_id, duration, person_id, associated_item) VALUES (:type_id, :duration, :person_id, :associated_item)";
+        $query = "INSERT INTO items (type_id, duration, person_id, associated_item, date_logged) VALUES (:type_id, :duration, :person_id, :associated_item, :date_logged)";
         $statement = $this->Conn->prepare($query);
         $statement->execute(
             array(
                 ':type_id'   => 3,
                 ':duration' => $item['duration'],
                 ':person_id' => $item['user_id'],
-                ':associated_item' => $item['associated_item']
+                ':associated_item' => $item['associated_item'],
+                ':date_logged' => date('Y-m-d')
             )
         );
     }
@@ -212,27 +213,17 @@ class Calendar
     }
     public function getThisWeeksEventsForUser()
     {
-        $stmt = $this->Conn->prepare("SELECT * FROM items WHERE person_id = :person_id AND type_id = 1 AND due_date BETWEEN CURDATE() + INTERVAL 2 DAY AND CURDATE() + INTERVAL 7 DAY");
-        $stmt->execute(
+        $query = "SELECT * FROM items WHERE person_id = :person_id AND type_id = 1 AND start BETWEEN CURDATE() AND CURDATE() + INTERVAL 7 DAY";
+        $statement =$this->Conn->prepare($query);
+       
+        $statement->execute(
             array(
                 ':person_id' => $_SESSION['user_data']['user_id']
             )
         );
-        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
         return $results;
-    }
-    public function getThisWeeksTaskTimeForUser()
-    {
-        $stmt = $this->Conn->prepare("SELECT * FROM items WHERE person_id = :person_id AND type_id = 3 AND due_date BETWEEN CURDATE() + INTERVAL 2 DAY AND CURDATE() + INTERVAL 7 DAY");
-        $stmt->execute(
-            array(
-                ':person_id' => $_SESSION['user_data']['user_id']
-            )
-        );
-        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        $totalDuration = $this->duration_cal($results);
-        return $totalDuration;
-    }
+    }    
     public function duration_cal($durations)
     {
         $sec = 0;
@@ -266,6 +257,20 @@ class Calendar
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $results;
     }
+    public function getThisWeeksTaskTimeForUser()
+    {
+        $query = "SELECT * FROM items WHERE person_id = :person_id AND type_id = 3 AND date_logged BETWEEN CURDATE() - INTERVAL 7 DAY AND CURDATE() + INTERVAL 1 DAY";
+
+        $statement = $this->Conn->prepare($query);
+        $statement->execute(
+            array(
+                ':person_id' => $_SESSION['user_data']['user_id']
+            )
+        );
+        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $totalDuration = $this->duration_cal($results);
+        return $totalDuration;
+    }
     public function getTotalTaskTimeForUser()
     {
         $stmt = $this->Conn->prepare("SELECT * FROM items WHERE person_id = :person_id AND type_id = 3");
@@ -277,5 +282,15 @@ class Calendar
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $totalDuration = $this->duration_cal($results);
         return $totalDuration;
+    }
+    public function completeTask($id)
+    {
+        $query = "UPDATE items SET completed = 1 WHERE item_id=:item_id";
+        $statement = $this->Conn->prepare($query);
+        $statement->execute(
+            array(
+                ':item_id'   => $id
+            )
+        );
     }
 }

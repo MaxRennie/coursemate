@@ -27,7 +27,7 @@
                             {foreach from=$todaysTasks item=task}
                                 <div class="task__body__list__item" value="{$task.item_id}">
                                     <div class="task__body__list__item__title">
-                                        <h5>{$task.title}</h5>
+                            <h5 {if $task.completed == 1}style="text-decoration: line-through;"{/if}>{$task.title}</h5>
                                     </div>
                                     <div class="task__body__list__item__description">
                                         <p>{$task.description}</p>
@@ -73,7 +73,7 @@
                                     {foreach from=$tomorrowsTasks item=task}
                                         <div class="task__body__list__item" value="{$task.item_id}">
                                             <div class="task__body__list__item__title">
-                                                <h5>{$task.title}</h5>
+                                        <h5 {if $task.completed == 1}style="text-decoration: line-through;"{/if}>{$task.title}</h5>
                                             </div>
                                             <div class="task__body__list__item__description">
                                                 <p>{$task.description}</p>
@@ -135,7 +135,7 @@
                                     {foreach from=$weekTasks item=task}
                                         <div class="task__body__list__item" value="{$task.item_id}">
                                             <div class="task__body__list__item__title">
-                                                <h5>{$task.title}</h5>
+                                        <h5 {if $task.completed == 1}style="text-decoration: line-through;"{/if}>{$task.title}</h5>
                                             </div>
                                             <div class="task__body__list__item__description">
                                                 <p>{$task.description}</p>

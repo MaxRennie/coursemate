@@ -70,9 +70,10 @@ $(".complete").click(function (e) {
     type: "POST",
     data: { complete: true, item_id: id },
     success: function (data) {
-      // e.currentTarget.offsetParent.hide();
+      window.location.reload();
     },
   });
+  window.location.reload();
 });
 
 $(".edit").click(function (e) {

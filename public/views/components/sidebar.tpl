@@ -29,7 +29,7 @@
                 <div class="sidebar__list-item">
                     {* //TODO: Add Icon *}
                     {* //TODO: Change to Course View *}
-                    <a href="/statistics">Statistics</a>
+                    <a href="/account">Statistics</a>
                 </div>
             </div>
         </div>

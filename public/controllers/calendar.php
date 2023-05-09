@@ -2,7 +2,7 @@
 
 $calendar = new Calendar($Conn);
 
-// Get all the items from the database
+// Get all the items from the database for the user
 if (isset($_POST['load'])) {
     $events = $calendar->getItemsForUser();
     // Convert the events array to json
@@ -77,4 +77,9 @@ if (isset($_POST['time'])) {
     $post['user_id'] = $_POST['person_id'];
     // Call the insertItem method and pass the data
     $calendar->addTime($post);
+}
+
+if (isset($_POST['complete'])) {
+    $calendar->completeTask($_POST['item_id']);
+    header("Refresh:0");
 }
